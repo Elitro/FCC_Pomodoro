@@ -1,3 +1,25 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container-fluid">
+
+  <div class="row">
+
+    <!-- Clock figure -->
+    <div class="col-sm-6 col-xs-12">
+
+      <app-clock></app-clock>
+
+    </div>
+
+
+    <!-- Timers -->
+    <div class="col-sm-6 col-xs-12">
+
+      <app-timers [text]="'Timer'" [timer]="25"></app-timers>
+
+      <app-timers [text]="'Break'" [timer]="5"></app-timers>
+
+    </div>
+
+  </div>
+
+</div>
+
