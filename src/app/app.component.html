@@ -5,7 +5,8 @@
     <!-- Clock figure -->
     <div class="col-sm-6 col-xs-12">
 
-      <app-clock></app-clock>
+      <app-clock [(initCD)]="initCD"></app-clock>
+      {{initCD}}
 
     </div>
 
@@ -13,7 +14,7 @@
     <!-- Timers -->
     <div class="col-sm-6 col-xs-12">
 
-      <app-timers [text]="'Timer'" [timer]="25"></app-timers>
+      <app-timers [text]="'Timer'" [timer]="25" [initiateCD]="initCD"></app-timers>
 
       <app-timers [text]="'Break'" [timer]="5"></app-timers>
 

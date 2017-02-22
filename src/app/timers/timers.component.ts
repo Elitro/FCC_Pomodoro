@@ -7,15 +7,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TimersComponent implements OnInit {
 
-  @Input()
-  text: string;
+  @Input() text: string;
 
-  @Input()
-  timer: number;
+  @Input() timer: number;
+
+  @Input() initiateCD: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    if (this.initiateCD) {
+      this.countdown();
+    }
 
   }
 
@@ -25,6 +28,16 @@ export class TimersComponent implements OnInit {
     } else {
       this.timer--;
     }
+  }
+
+  countdown() {
+    let event = setInterval(() => {
+      if (this.timer > 0) {
+        this.timer--;
+      } else {
+        clearInterval(event);
+      }
+    }, 1000);
   }
 
 }
