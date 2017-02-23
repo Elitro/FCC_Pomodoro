@@ -1,3 +1,4 @@
+import { TimerModel } from './models/timer.model';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  initCD: boolean = false;
+
+  timerObject = new TimerModel(false, 25);
+  breakObject = new TimerModel(false, 5);
+
+  constructor() { }
+
+  startOtherTimer(value: boolean) {
+    if (value) {
+      this.timerObject.initCD = !this.timerObject.initCD;
+      this.breakObject.initCD = !this.breakObject.initCD;
+    }
+  }
 }

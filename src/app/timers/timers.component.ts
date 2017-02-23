@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-timers',
   templateUrl: './timers.component.html',
   styleUrls: ['./timers.component.css']
 })
-export class TimersComponent implements OnInit {
+export class TimersComponent implements OnInit, OnChanges {
 
   @Input() text: string;
 
@@ -13,12 +13,22 @@ export class TimersComponent implements OnInit {
 
   @Input() initiateCD: boolean;
 
+  @Output() timerFinish: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit() {
+    
+  }
+
+  ngOnChanges() {
     if (this.initiateCD) {
       this.countdown();
     }
+
+  }
+
+  reset(){
 
   }
 
@@ -32,9 +42,12 @@ export class TimersComponent implements OnInit {
 
   countdown() {
     let event = setInterval(() => {
-      if (this.timer > 0) {
+      if (this.timer > 0 && this.initiateCD) {
         this.timer--;
-      } else {
+      } else if (this.timer === 0) {
+        this.timerFinish.emit(true);
+      }
+       else {
         clearInterval(event);
       }
     }, 1000);

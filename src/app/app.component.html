@@ -5,8 +5,8 @@
     <!-- Clock figure -->
     <div class="col-sm-6 col-xs-12">
 
-      <app-clock [(initCD)]="initCD"></app-clock>
-      {{initCD}}
+      <app-clock [(initCD)]="this.timerObject.initCD"></app-clock>
+      {{this.timerObject.initCD}}
 
     </div>
 
@@ -14,9 +14,9 @@
     <!-- Timers -->
     <div class="col-sm-6 col-xs-12">
 
-      <app-timers [text]="'Timer'" [timer]="25" [initiateCD]="initCD"></app-timers>
+      <app-timers [text]="'Timer'" [timer]="timerObject.timer" [initiateCD]="timerObject.initCD" (timerFinish)="startOtherTimer($event)"></app-timers>
 
-      <app-timers [text]="'Break'" [timer]="5"></app-timers>
+      <app-timers [text]="'Break'" [timer]="breakObject.timer" [initiateCD]="breakObject.initCD" (timerFinish)="startOtherTimer($event)"></app-timers>
 
     </div>
 
