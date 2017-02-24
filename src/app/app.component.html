@@ -14,7 +14,7 @@
     <!-- Timers -->
     <div class="col-sm-6 col-xs-12">
 
-      <app-timers *ngFor="let timer of timers; let i = index; trackBy: trackByFn;"
+      <app-timers *ngFor="let timer of timers; let i = index;"
       [text]="timer.text" [(timer)]="timer.timer" [initiateCD]="timer.initCD"
       (timerFinish)="startOtherTimer($event, i)"></app-timers>
 

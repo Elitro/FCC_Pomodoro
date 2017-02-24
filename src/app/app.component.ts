@@ -1,21 +1,25 @@
 import { TimerModel } from './models/timer.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
 
 
   timers: Array<TimerModel> =  new Array<TimerModel>();
 
-  constructor() { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.timers.push(new TimerModel(false, 5, 'Timer'));
     this.timers.push(new TimerModel(false, 5, 'Break'));
+  }
+
+  ngOnChanges() {
+    this.changeDetectorRef.detectChanges();
   }
 
   startOtherTimer(value: boolean, i: number) {
@@ -52,9 +56,5 @@ export class AppComponent implements OnInit {
       }
     }
     // if (this.timers['timerObject'].timer)
-  }
-
-  trackByFn(index, item) {
-    return item.id;
   }
 }
