@@ -5,8 +5,8 @@
     <!-- Clock figure -->
     <div class="col-sm-6 col-xs-12">
 
-      <app-clock [(initCD)]="this.timerObject.initCD"></app-clock>
-      {{this.timerObject.initCD}}
+      <app-clock (click)="pauseResume()"></app-clock>
+      <!--{{this.timerObject.initCD}}-->
 
     </div>
 
@@ -14,9 +14,13 @@
     <!-- Timers -->
     <div class="col-sm-6 col-xs-12">
 
-      <app-timers [text]="'Timer'" [timer]="timerObject.timer" [initiateCD]="timerObject.initCD" (timerFinish)="startOtherTimer($event)"></app-timers>
+      <app-timers *ngFor="let timer of timers; let i = index; trackBy: trackByFn;"
+      [text]="timer.text" [(timer)]="timer.timer" [initiateCD]="timer.initCD"
+      (timerFinish)="startOtherTimer($event, i)"></app-timers>
 
-      <app-timers [text]="'Break'" [timer]="breakObject.timer" [initiateCD]="breakObject.initCD" (timerFinish)="startOtherTimer($event)"></app-timers>
+      <!--<app-timers [text]="'Timer'" [timer]="timers['timerObject'].timer" [initiateCD]="timers[timerObject.initCD]" (timerFinish)="startOtherTimer($event)"></app-timers>
+
+      <app-timers [text]="'Break'" [timer]="timers[breakObject].timer" [initiateCD]="timers[breakObject.initCD]" (timerFinish)="startOtherTimer($event)"></app-timers>-->
 
     </div>
 
