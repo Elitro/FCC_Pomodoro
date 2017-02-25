@@ -7,9 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ClockComponent implements OnInit {
 
-  @Input() initCD: boolean = false;
-
-  @Output() initCDChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() clockAction: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
@@ -17,8 +15,11 @@ export class ClockComponent implements OnInit {
   }
 
   initiateCD(){
-    this.initCD = !this.initCD;
-    this.initCDChange.emit(this.initCD);
+    this.clockAction.emit('pause/resume');
+  }
+
+  reset() {
+    this.clockAction.emit('reset');
   }
 
 }

@@ -23,8 +23,7 @@ export class TimersComponent implements OnInit, OnChanges {
     
   }
 
-  ngOnChanges() {
-    this.timerChange.emit(this.timer);
+  ngOnChanges() {    
     if (this.initiateCD) {
       this.countdown();
     }
@@ -38,8 +37,10 @@ export class TimersComponent implements OnInit, OnChanges {
   changeTimer(change: boolean): void {
     if (change) {
       this.timer++;
+      this.timerChange.emit(this.timer);
     } else {
       this.timer--;
+      this.timerChange.emit(this.timer);
     }
   }
 
@@ -47,6 +48,7 @@ export class TimersComponent implements OnInit, OnChanges {
     let event = setInterval(() => {
       if (this.timer > 0 && this.initiateCD) {
         this.timer--;
+        this.timerChange.emit(this.timer);
       } else if (this.timer === 0) {
         this.timerFinish.emit(true);
         clearInterval(event);
