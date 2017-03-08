@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ClockComponent implements OnInit {
 
   @Output() clockAction: EventEmitter<string> = new EventEmitter<string>();
+  @Input() timer: number;
 
   constructor() { }
 

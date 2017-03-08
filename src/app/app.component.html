@@ -5,7 +5,7 @@
     <!-- Clock figure -->
     <div class="col-sm-6 col-xs-12 center-clock">
 
-      <app-clock (clockAction)="executeClockAction($event)"></app-clock>
+      <app-clock (clockAction)="executeClockAction($event)" [timer]="service.getCurrentTimer()"></app-clock>
       <!--{{this.timerObject.initCD}}-->
 
     </div>
@@ -13,17 +13,16 @@
     <!-- Timers -->
     <div class="col-sm-6 col-xs-12">
 
-      <app-timers *ngFor="let timer of timers; let i = index;"
+      <!--<app-timers *ngFor="let timer of timers; let i = index;"
       [text]="timer.text" [(timer)]="timer.timer" [initiateCD]="timer.initCD"
-      (timerFinish)="startOtherTimer($event, i)"></app-timers>
+      (timerFinish)="startOtherTimer($event, i)"></app-timers>-->
 
-      <!--<app-timers [text]="timers[0].text" [(timer)]="timers[0].timer" [initiateCD]="timers[0].initCD" (timerFinish)="startOtherTimer($event, 0)"></app-timers>
+      <app-timers [text]="'Timer'" [(timer)]="timerClock"></app-timers>
 
-      <app-timers [text]="timers[1].text" [(timer)]="timers[1].timer" [initiateCD]="timers[1].initCD" (timerFinish)="startOtherTimer($event, 1)"></app-timers>-->
+      <app-timers [text]="'Break'" [(timer)]="breakClock"></app-timers>
 
     </div>
 
   </div>
 
 </div>
-

@@ -1,3 +1,4 @@
+import { PomodoroService } from './pomodoro.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,7 @@ import { TimersComponent } from './timers/timers.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [PomodoroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
