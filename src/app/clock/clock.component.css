@@ -1,0 +1,24 @@
+.clock {
+
+    cursor: pointer;
+    width: 140px;
+    height: 140px;
+
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #666;
+    color: #666;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+
+    font: 100px Arial, sans-serif;
+}
+
+.center-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}

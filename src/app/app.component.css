@@ -1,5 +1,10 @@
-.center-clock{
+.center-content{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 20px;
 }

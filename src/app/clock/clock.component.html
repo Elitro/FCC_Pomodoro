@@ -1,6 +1,11 @@
-<button class="btn btn-primary" (click)="initiateCD()">Countdown</button>
-<button class="btn btn-danger" (click)="reset()">Reset</button>
-
 <div>
-    {{timer}}
+
+    <div class="clock" (click)="initiateCD()">
+        {{timer}}
+    </div>
+
+    <div class="center-button">
+        <button class="btn btn-danger" (click)="reset()">Reset</button>
+    </div>
+
 </div>

@@ -21,29 +21,6 @@ export class AppComponent implements OnInit {
     this.service.setCurrentTimer(this.timerClock);
   }
 
-  // startOtherTimer(value: boolean, i: number) {
-  //   console.log('i:', i);
-  //   // First we check if there is another timer ahead, and then we start it
-  //   if (this.timers.length > i + 1) {
-  //     this.timers[i + 1].initCD = !this.timers[i + 1].initCD;
-  //   }
-  //   // If not, we reset the previous timers
-  //   else {
-
-  //     for (let x = 0; x < this.timers.length; x++) {
-  //       this.timers[x].initCD = false;
-  //       this.timers[x].timer = this.timers[x].ghostTimer;
-  //     }
-  //     // Start the countdown in the first timer
-  //     this.timers[0].initCD = !this.timers[0].initCD;
-  //     // this.changeDetectorRef.detectChanges();
-  //     // this.appRef.tick();
-  //     console.log('startOtherTimer:', this.timers);
-  //   }
-
-
-  // }
-
   executeClockAction(action: string) {
     if (action === 'pause/resume') {
       this.pauseResume();
@@ -53,10 +30,11 @@ export class AppComponent implements OnInit {
   }
 
   pauseResume() {
-    this.service.countdown();
+    this.service.countdown(this.timerClock, this.breakClock);
   }
 
   reset() {
+    this.service.setInitiateCD(false);
     this.service.setCurrentTimer(this.timerClock);
   }
 
