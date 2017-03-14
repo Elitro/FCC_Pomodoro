@@ -23,6 +23,10 @@ export class PomodoroService {
     this._initiateCD = value;
   }
 
+  getInitiateCD(): boolean {
+    return this._initiateCD;
+  }
+
   countdown(timer: number, breakTimer: number) {
     this._initiateCD = !this._initiateCD;
     let event = setInterval(() => {

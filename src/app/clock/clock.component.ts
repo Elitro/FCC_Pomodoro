@@ -10,6 +10,7 @@ export class ClockComponent implements OnInit {
 
   private minutes: number;
   private seconds: string;
+  private status: string;
 
   @Output() clockAction: EventEmitter<string> = new EventEmitter<string>();
   @Input('timer') set timer(totalSeconds: number) {
@@ -21,14 +22,20 @@ export class ClockComponent implements OnInit {
   constructor(private service: PomodoroService) { }
 
   ngOnInit() {
+    this.getTimerStatus();
   }
 
   initiateCD() {
     this.clockAction.emit('pause/resume');
+    this.getTimerStatus();
   }
 
   reset() {
     this.clockAction.emit('reset');
+  }
+
+  getTimerStatus(): void {
+    this.status = this.service.getInitiateCD() ? 'Stop' : 'Start';
   }
 
 }
