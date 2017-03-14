@@ -1,3 +1,4 @@
+import { PomodoroService } from './../pomodoro.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -7,15 +8,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ClockComponent implements OnInit {
 
-  @Output() clockAction: EventEmitter<string> = new EventEmitter<string>();
-  @Input() timer: number;
+  private minutes: number;
+  private seconds: string;
 
-  constructor() { }
+  @Output() clockAction: EventEmitter<string> = new EventEmitter<string>();
+  @Input('timer') set timer(totalSeconds: number) {
+    this.minutes = Math.floor(totalSeconds / 60);
+    this.seconds = (totalSeconds % 60).toLocaleString(undefined, { minimumIntegerDigits: 2 });
+
+  }
+
+  constructor(private service: PomodoroService) { }
 
   ngOnInit() {
   }
 
-  initiateCD(){
+  initiateCD() {
     this.clockAction.emit('pause/resume');
   }
 

@@ -12,7 +12,7 @@ export class PomodoroService {
   constructor() { }
 
   setCurrentTimer(value: number): void {
-    this._currentTimer = value;
+    this._currentTimer = value * 60;
   }
 
   getCurrentTimer(): number {

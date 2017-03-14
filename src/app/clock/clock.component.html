@@ -1,10 +1,11 @@
 <div>
 
     <div class="clock" (click)="initiateCD()">
-        {{timer}}
+        {{minutes}}:{{seconds}}
     </div>
 
     <div class="center-button">
+        <button class="btn btn-success" (click)="initiateCD()">Start/Pause</button>
         <button class="btn btn-danger" (click)="reset()">Reset</button>
     </div>
 

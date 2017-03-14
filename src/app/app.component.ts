@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   }
 
   pauseResume() {
-    this.service.countdown(this.timerClock, this.breakClock);
+    this.service.countdown(this.timerClock * 60, this.breakClock * 60);
   }
 
   reset() {
